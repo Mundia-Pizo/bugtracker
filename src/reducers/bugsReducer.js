@@ -1,4 +1,4 @@
-import *as actions from '../actions/actiionTypes';
+import * as actions from '../actions/actiionTypes';
 
 const initialState = {
     bugs:[],
@@ -7,24 +7,21 @@ const initialState = {
 function bugs(state=initialState, action){
     switch (action.type){
         case actions.GET_BUGS:
-            return [
+            return {
                 ...state,
-                bugs=action.payload,
-            ];
+                bugs:action.payload,
+            };
         case actions.ADD_BUG:
-            return[...state,
-                {
-                    description: action.payload.description,
-                    resolved:false
-                }
-            ];
-        case "DELETE_BUG":
-            return[
+            return{
                 ...state,
-                {
-                    description:action.payload.id,
-                }
-            ]
+                description: action.payload.description,
+                resolved:false
+            };
+        case actions.DELETE_BUG:
+            return{
+                ...state,
+                 bugs:state.bugs.filter(bug => bug !== action.payload)
+            }
         default:
             return state
         }

@@ -3,7 +3,8 @@ import './App.css';
 import Header from './components/layout/Header';
 import {Provider}  from 'react-redux';
 import store from './store';
-import Bugs from './components/layout/Bugs';
+import Bugs from './components/Bugs';
+import AddBugs from './components/AddBugs';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <div className="App">
           <Header/>
           <Bugs/>
+          <AddBugs/>
         </div>
       </Fragment>
     </Provider>
