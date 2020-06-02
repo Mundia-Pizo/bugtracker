@@ -20,10 +20,10 @@ function bugs(state=initialState, action){
         case actions.DELETE_BUG:
             return{
                 ...state,
-                 bugs:state.bugs.filter(bug => bug !== action.payload)
+                 bugs:state.bugs.filter(bug => bug.id !== action.payload)
             }
         default:
-            return state
+            return state;
         }
 }
 

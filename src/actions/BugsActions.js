@@ -3,7 +3,7 @@ import axios from 'axios';
 
 
 export const get_bugs=()=>dispatch => {
-    axios.get('http://127.0.0.1:8000/tracker')
+    axios.get('http://127.0.0.1:8000/')
     .then(res=>{
         dispatch(
              {
@@ -15,9 +15,9 @@ export const get_bugs=()=>dispatch => {
     )
 }
 
-
+ 
 export const delete_bug= (id)=>dispatch => {
-    axios.get('http://127.0.0.1:8000/tracker')
+    axios.delete(`http://127.0.0.1:8000/${id}`)
     .then(res=>{
         dispatch(
              {

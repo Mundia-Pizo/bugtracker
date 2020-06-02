@@ -4,7 +4,7 @@ export class AddBugs extends Component {
     render() {
         return (
             <form method="post" action="/">
-                <label>Add Bugs</label>
+                <legend>Add Bugs</legend>
                 <fieldset>
                     <div className="form-group col-sm-6 col">
                         <input type="text" placeholder="bug title"/>

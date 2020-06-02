@@ -6,7 +6,10 @@ import {get_bugs, delete_bug} from  '../actions/BugsActions';
 export class Bugs extends Component {
 
     static propTypes={
-        bugs:PropTypes.array.isRequired
+        bugs:PropTypes.array.isRequired,
+        get_bugs:PropTypes.func.isRequired,
+        delete_bug:PropTypes.func.isRequired,
+
     }
 
     componentDidMount() {
@@ -34,7 +37,7 @@ export class Bugs extends Component {
                                 <td>{bug.id}</td>
                                 <td>{bug.description}</td>
                                 <td><input type="checkbox"/></td>
-                                <td><button onClick={this.props.delete_bug.bind(this, bug.i)} className="btn btn-outline-danger">Delete</button></td>
+                                <td><button onClick={this.props.delete_bug.bind(this,bug.id)} className="btn btn-outline-danger btn-sm">Delete</button></td>
                             </tr>
                         ))}
                     </tbody>
