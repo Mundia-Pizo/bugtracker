@@ -36,7 +36,7 @@ export class Bugs extends Component {
                                 <td>{bug.title}</td>
                                 <td>{bug.id}</td>
                                 <td>{bug.description}</td>
-                                <td><input type="checkbox"/></td>
+                                <td><input type="checkbox" value={bug.resolved}/></td>
                                 <td><button onClick={this.props.delete_bug.bind(this,bug.id)} className="btn btn-outline-danger btn-sm">Delete</button></td>
                             </tr>
                         ))}

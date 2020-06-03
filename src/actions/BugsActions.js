@@ -29,3 +29,17 @@ export const delete_bug= (id)=>dispatch => {
     )
     
 }
+
+
+export const add_bug=(bug)=>dispatch => {
+    axios.post('http://127.0.0.1:8000/', bug)
+    .then(res=>{
+        dispatch(
+             {
+                 type:types.ADD_BUG,
+                 payload: res.data,
+             });
+    }).catch(
+        err => console.log(err)
+    )
+}

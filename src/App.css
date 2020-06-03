@@ -8,3 +8,9 @@
 .header-color{
   background-color: #a4a4a4;
 }
+body{
+  padding-left: 5%;
+  padding-right: 5%;
+  justify-content: center;
+  align-items: center;
+}
