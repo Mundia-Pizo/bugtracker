@@ -5,7 +5,7 @@ import {add_bug} from'../actions/BugsActions';
 
 
 export class AddBugs extends Component {
-    
+
     state={
         title:'',
         description: '',
@@ -13,12 +13,12 @@ export class AddBugs extends Component {
     static propTypes={
         add_bug: PropTypes.func.isRequired
     }
-    // onChange=event=>this.setState(
-    //     { value:event.target.value });
+    onChange=event=>this.setState(
+        { [event.target.name]:event.target.value });
     
-    onChange=(event)=>this.setState({
-        value: event.target.value
-        })
+    // onChange=(event)=>this.setState({
+    //     value: event.target.value
+    //     })
     onSubmit=e=>{
         e.preventDefault();
         const {title, description}=this.state;
@@ -32,12 +32,12 @@ export class AddBugs extends Component {
                 <legend>Add Bug</legend>
                 <div className="form-group">
                     <label >title</label>
-                    <input type="text" onChange={this.onChange} value={title}
+                    <input type="text" name="title" onChange={this.onChange} value={title}
                     className="form-control" placeholder="bug title"/>
                 </div>
                 <div className="form-group">
                     <label >Description</label>
-                    <textarea onChange={this.onChange} value={description} className="form-control"  rows="3" />
+                    <textarea onChange={this.onChange} value={description} name="description" className="form-control"  rows="3" />
                     <button className="btn btn-outline-primary mt-4" type="submit">Submit</button>
                 </div>
             </form>

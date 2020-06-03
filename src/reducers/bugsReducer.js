@@ -14,7 +14,7 @@ function bugs(state=initialState, action){
         case actions.ADD_BUG:
             return{
                 ...state,
-                bugs:[...state, action.payload]
+                bugs:[...state.bugs, action.payload]
             };
         case actions.DELETE_BUG:
             return{
