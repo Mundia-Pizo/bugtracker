@@ -7,21 +7,26 @@ import {Provider}  from 'react-redux';
 import store from './store';
 import Bugs from './components/Bugs';
 import AddBugs from './components/AddBugs';
+import {Switch, Route, HashRouter as Router} from 'react-router-dom';
 
 function App() {
   return (
     <Provider store={store}>
+      <Router>
       <Fragment>
         <div className="App mb-30">
           <Header/>
-          <Bugs/>
-          <div className="col-sm-6 mt-15"> 
-             <AddBugs/>
+          <div className="container">
+             <Switch>
+               <Route exact path="/" component={Bugs}/>
+               <Route exact path="/login" component={Login}/>
+               <Route exact path="/register" component={Register}/>
+               <Route exact path="/addbug" component={AddBugs}/> 
+             </Switch>
           </div>
-          <Login/>
-          <Register/>
         </div>
       </Fragment>
+      </Router>
     </Provider>
   );
 }
