@@ -9,6 +9,7 @@ export class AddBugs extends Component {
     state={
         title:'',
         description: '',
+        
     }
     static propTypes={
         add_bug: PropTypes.func.isRequired

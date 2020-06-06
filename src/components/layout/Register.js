@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import {Link, Route, HashRouter as Router} from 'react-router-dom';
+// import PropTypes from 'prop-types';
+import {Link, HashRouter as Router} from 'react-router-dom';
 
 export class Register extends Component {
     static propTypes = {
