@@ -6,19 +6,7 @@ export const loadUser=()=>(dispatch, getState)=>{
     // user loading
     dispatch({type: types.USER_LOADING})
     // get the token form the payload
-    const token = getState().auth.token
-    // Headers with axios we set a config
-
-    const config={
-        headers: {
-            'Content-Type':'application/json'
-         }
-    }
-    // if token, add to headers config
-    if(token){
-        config.headers['Authorization']=`Token  ${token}`
-    }
-    axios.get('http://localhost:8000/api/auth/user/',config)
+    axios.get('http://localhost:8000/api/auth/user/',tokenConfig(getState))
     .then(response=>{
         dispatch({
             type:types.USER_LOADED,
@@ -28,6 +16,28 @@ export const loadUser=()=>(dispatch, getState)=>{
     error => console.log(error)
 )
 }
+
+export const register=({username,password, email})=>(dispatch)=>{
+
+    const config={
+        headers: {
+            "Content-Type":"application/json"
+         }
+    }
+    //request body
+    const body=JSON.stringify({username,password, email})
+    // if token, add to headers config
+    axios.post("http://localhost:8000/api/auth/register/",body,config)
+    .then(response=>{
+        dispatch({
+            type:types.REGISTER_SUCCESS,
+            payload: response.data
+        })
+    }).catch(
+    error => console.log(error)
+)
+}
+
 
 
 export const login=(username,password)=>(dispatch)=>{
@@ -56,6 +66,25 @@ export const logoutUser=()=>(dispatch, getState)=>{
   
 
     // get the token form the payload
+   
+    axios.post('http://localhost:8000/api/auth/logout/',null,tokenConfig(getState))
+    .then(response=>{
+        dispatch({
+            type:types.LOGOUT_SUCCESS,
+        })
+    }).catch(
+    error => console.log(error) 
+)
+}
+
+//check token and load user 
+
+
+
+
+// set token with token 
+
+export const tokenConfig=getState=>{
     const token = getState().auth.token
     // Headers with axios we set a config
 
@@ -68,12 +97,5 @@ export const logoutUser=()=>(dispatch, getState)=>{
     if(token){
         config.headers['Authorization']=`Token  ${token}`
     }
-    axios.post('http://localhost:8000/api/auth/logout/',null,config)
-    .then(response=>{
-        dispatch({
-            type:types.LOGOUT_SUCCESS,
-        })
-    }).catch(
-    error => console.log(error) 
-)
+    return config
 }

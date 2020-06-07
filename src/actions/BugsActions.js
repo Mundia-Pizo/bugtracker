@@ -1,9 +1,10 @@
 import * as types from './actiionTypes';
 import axios from 'axios';
+import {tokenConfig} from './auth';
 
 
-export const get_bugs=()=>dispatch => {
-    axios.get('http://127.0.0.1:8000/')
+export const get_bugs=()=>(dispatch, getState) => {
+    axios.get('http://127.0.0.1:8000/', tokenConfig(getState))
     .then(res=>{
         dispatch(
              {
@@ -16,8 +17,8 @@ export const get_bugs=()=>dispatch => {
 }
 
  
-export const delete_bug= (id)=>dispatch => {
-    axios.delete(`http://127.0.0.1:8000/${id}`)
+export const delete_bug= (id)=>(dispatch,getState) => {
+    axios.delete(`http://127.0.0.1:8000/${id}`, tokenConfig(getState))
     .then(res=>{
         dispatch(
              {
@@ -31,8 +32,8 @@ export const delete_bug= (id)=>dispatch => {
 }
 
 
-export const add_bug=(bug)=>dispatch => {
-    axios.post('http://127.0.0.1:8000/',bug)
+export const add_bug=(bug)=>(dispatch, getState) => {
+    axios.post('http://127.0.0.1:8000/',bug, tokenConfig(getState))
     .then(res=>{
         dispatch(
              {

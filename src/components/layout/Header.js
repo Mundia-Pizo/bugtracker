@@ -15,6 +15,12 @@ export class Header extends Component {
 
         const authLinks=(
          <ul className="row ml-auto ml-4 mr-4 ">
+             <span className="navbar-text mr-3">
+                 <strong className="text-primary">
+                   {user ? `Welcome ${user.username}`:''}
+                 </strong>
+                 
+             </span>
             <li className="nav-item mr-2"><Link to ="/addbug"><button className="btn btn-outline-success">Add Bug</button></Link></li>
             <li className="nav-item mr-2"><button onClick={this.props.logoutUser} className="nav-link btn btn-success btn-sm ">Logout</button></li>
         </ul>
