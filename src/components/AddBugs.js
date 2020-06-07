@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {add_bug} from'../actions/BugsActions';
+import {Redirect} from 'react-router-dom';
 
 
 export class AddBugs extends Component {
@@ -17,16 +18,25 @@ export class AddBugs extends Component {
     onChange=event=>this.setState(
         { [event.target.name]:event.target.value });
     
+    redirect=(
+        <Redirect to ="/"/>
+    )
     onSubmit=e=>{
         e.preventDefault();
         const {title, description}=this.state;
         const bug ={title, description};
         this.props.add_bug(bug);
+       
     }
     render() {
+        // if(this.props.add_bug){
+        //     return <Redirect to="/addbug"/>;
+        // }else{
+        //     return <Redirect  to="/"/>
+        // }
         const { title, description }=this.state;
         return (
-            <div className="col-md-6 m-auto">
+            <div className="col m-auto">
             <div className="card card-body mt-5">
                 <form onSubmit={this.onSubmit}>
                         <legend>Add Bug</legend>

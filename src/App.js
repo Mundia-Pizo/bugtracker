@@ -28,7 +28,7 @@ class  App extends Component {
                <PrivateRoute exact path="/" component={Bugs}/>
                <Route exact path="/login" component={Login}/>
                <Route exact path="/register" component={Register}/>
-               <Route exact path="/addbug" component={AddBugs}/> 
+               <PrivateRoute exact path="/addbug" component={AddBugs}/> 
              </Switch>
           </div>
         </div>
